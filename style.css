@@ -115,13 +115,13 @@ body {
 }
 
 .btn.primary {
-  background: #a5a488;
+  background: #4c83ff;
   color: #fff;
 }
 
 .btn.outline {
-  border: 2px solid #a5a488;
-  color: #a5a488;
+  border: 2px solid #4c83ff;
+  color: #4c83ff;
 }
 
 .hero-right {
@@ -213,12 +213,11 @@ body {
   color: #333;
 }
 
-/* Skills Section */
 .skills-section {
   background: #f4f4f4;
-  padding: 60px 20px;
+  padding: 60px 0;
   text-align: center;
-  scroll-margin-top: 80px;
+  overflow: hidden;
 }
 
 .skills-section h2 {
@@ -227,30 +226,46 @@ body {
   font-weight: 700;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
-  justify-items: center;
+.skills-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.skills-track {
+  display: flex;
+  gap: 20px; /* 👈 This creates the gap between cards */
+  width: max-content;
+  animation: scroll-left 25s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .skill-card {
   background: #ffffff;
   border-radius: 15px;
-  padding: 25px 15px;
+  padding: 20px 15px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
-  max-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s;
+  width: 160px;
+  margin: 0; /* no margin needed now */
+  flex: 0 0 auto;
 }
 
 .skill-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  transform: scale(1.05);
 }
 
 .skill-icon {
-  width: 120px;
+  width: 80px;
   height: 80px;
   object-fit: contain;
   margin-bottom: 10px;
@@ -260,6 +275,7 @@ body {
   font-size: 18px;
   color: #333;
   font-weight: 600;
+  margin: 10px 0 4px;
 }
 
 .level-label {
@@ -267,6 +283,7 @@ body {
   font-weight: 600;
   color: #777;
 }
+
 
 /* Projects Section */
 .projects-section {
@@ -291,14 +308,20 @@ body {
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  background: #f9f9f9; /* fallback bg in case image fails */
 }
+
+
 
 .project-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 15px; /* matches card border */
   transition: all 0.5s ease;
 }
+
+
 
 .project-info {
   position: absolute;
